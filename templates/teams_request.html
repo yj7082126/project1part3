@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block center_content %}
+
+<div class="content-section">
+	<form method="POST" action="">
+		{{ form.hidden_tag() }}
+		<fieldset class="form-group">
+			<legend class="border-bottom mb-4">
+					Team Statistics For 2018-2019 Season
+			</legend>
+			<div class="form-group">
+				{{ form.team.label(class="form-control-label")}}
+				{% if form.team.errors %}
+					{{ form.team(class="form-control form-control-lg is-invalid")}}
+					<div class="invalid-feedback">
+						{% for error in form.team.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.team(class="form-control form-control-lg")}}
+				{% endif %}
+			</div>
+		</fieldset>
+		<div class="form-group">
+			{{ form.submit(class="btn btn-outline-info") }}
+		</div>
+	</form>
+</div>
+
+{% endblock center_content %}
